@@ -2,13 +2,14 @@
         <head>
             <title>Employment Application</title>
             <link rel="stylesheet" href="css/style.css">
+            <script src="custom_js.js"></script>
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-        <body data-spy="scroll" class="m-container">
+            <body data-spy="scroll" class="m-container">
             <div class="col-md-12 col-md-offset-4">
-                <cfform method='post' action="" name="myForm" enctype='multipart/form-data' onsubmit="return(validate());">
+                <cfform method='post' action="components/task1.cfc" name="myForm" enctype='multipart/form-data' onsubmit="return(validate());">
                     <h3 style="align:center;">Employment Application</h3>
                     <h6> Infinity Box Inc. </h6>
                     <hr>
@@ -109,62 +110,4 @@
                                                         <cfinvokeargument name="phone" value="#form.Phone#">
                 </cfinvoke>
     </cfif>
-    <script type="text/javascript">
-        <!--
-        // Form validation code will come here.
-        function validate() {
-            var relocate = document.getElementById('Relocate').checked;
-            var email = document.getElementById('EMail').value;
-            var phone = document.getElementById('Phone').value;
-            var p_length = phone.length;
-            var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-            if (document.myForm.position.value == "") {
-                alert("Please select atleast one position !");
-                document.myForm.Position.focus();
-                event.preventDefault();
-                return false;
-            }
-            if (document.myForm.Name.value == "") {
-                alert("Please provide your name!");
-                document.myForm.Name.focus();
-                event.preventDefault();
-                return false;
-            }
-            if (document.myForm.Lname.value == "") {
-                alert("Please provide your name!");
-                document.myForm.Name.focus();
-                event.preventDefault();
-                return false;
-            }
-            if (document.myForm.EMail.value == "") {
-                alert("Please provide your Email!");
-                document.myForm.EMail.focus();
-                event.preventDefault();
-                return false;
-            }
-            if (!(email.match(mailformat))) {
-                alert("Email is not in correct format");
-                event.preventDefault();
-                return false;
-            }
-            if (document.myForm.join_date.value == "") {
-                alert("Please provide yourJoin date!");
-                document.myForm.join_date.focus();
-                event.preventDefault();
-                return false;
-            }
-            if (isNaN(phone) == true) {
-                alert("Phone should not be in string format");
-                event.preventDefault();
-                return false;
-            }
-            if (p_length != 10) {
-                alert("Phone length should be equal to 10");
-                event.preventDefault();
-                return false;
-            }
-            return true;
-        }
-        //
-        -->
-    </script>
+  

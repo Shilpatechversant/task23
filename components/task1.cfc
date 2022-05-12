@@ -1,4 +1,4 @@
-    <cffunction name="display" access="remote"> 
+    <cffunction name="display" access="remote" output="true"> 
         <cfargument name="Position" required="true">
         <cfargument name="Relocate" required="true">
         <cfargument name="join_date" required="true">
@@ -8,13 +8,13 @@
         <cfargument name="EMail" required="true">
         <cfargument name="Phone" required="true">
 
-        <cfset thisDir = expandPath("./uploads")>            
-        <cffile action="upload" fileField="doc_file"  destination="#thisDir#" result="fileUpload"
+        <cfset local.thisDir = expandPath("./uploads")>            
+        <cffile action="upload" fileField="doc_file"  destination="#local.thisDir#" result="fileUpload"
         nameconflict="overwrite">
-        <cfset file_name=#fileupload.serverfile# >         
+        <cfset local.file_name=#fileupload.serverfile# >         
         <cfset fileLoc=fileupload.serverDirectory & '\' & fileupload.serverfile >
-        <cfset imageValue = #file_name#>
-        <cfset salary=#arguments.dollar# & '.' & #arguments.cents#>
+        <cfset local.imageValue = #local.file_name#>
+        <cfset local.salary=#arguments.dollar# & '.' & #arguments.cents#>
         <cfquery name="insert" datasource="newtech" result="res">    
             INSERT INTO sakila.emp_details(position,relocate,join_date,website,resume,salary,first_name,last_name,email,phone)
                 VALUES(
